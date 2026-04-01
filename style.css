@@ -1,3 +1,6 @@
+/* At first, I just directly using hex color. But, after my studio class, I learnt how to create a color scheme 
+under dark mode, I decided to make one for this assignment. So I created two color palettes for different situations. */
+/* all in blue tone, a sense of harmony*/
 :root{
     --color01: #2d84be;
     --color02: #3498db;
@@ -16,16 +19,20 @@
     --color04: #d1e6ff;
     --color05: #ced8e8;
     --color06: #1c1f24;
-    --color07: #1e1e1e;
+    --color07: #161b21;
     }
 }
 
 body{
+    /* Preventing edge pasting */
     margin: 25px auto;
     max-width: 800px;
     padding: 0 20px;
+/* I felt the origin line-height was too tight, so I gave it more space */
     line-height: 1.6;
+    /* I set 3 different fonts just in case some browser can't apply my primary preference */
     font-family: Arial, Helvetica, sans-serif;
+/* I wanted all the elements can be arranged in vertical and in center, for concerntrating */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,6 +40,8 @@ body{
 }
 
 h1{
+    font-size: 36px;
+    font-weight: bold;
     text-align: center;
     color: var(--color01);
     margin-bottom: 18px;
@@ -40,6 +49,7 @@ h1{
 
 main{
     width: 100%;
+    /* I tried to using grid layout, it can be realize in flex layout by using flex-direction and align-items as well */
     display: grid;
     grid-template-columns: 1fr;
 }
@@ -47,17 +57,40 @@ main{
 section{
     margin: 20px 0;
     padding: 15px;
+    /* I have tried to add a blue left border to the section part, clear and classic, but I wanna play around more with css, 
+    so I tried to add border-radius and box-shadow, and the final effect actually not bad. */
     border-radius: 30px 0;
     box-shadow: 0px 8px 4px var(--color07);
+    /* Making each section distinct from the others */
     background: var(--color03);
     display: flex;
     flex-direction: column;
 }
 
+/* Source - https://stackoverflow.com/a/35625473
+Posted by marcelo2605, modified by community. See post 'Timeline' for change history
+Retrieved 2026-04-02, License - CC BY-SA 3.0 */
+/* I googled how to change the style of the ordered list tag, because I found out even though I gave a layout style to the 
+section tag, it can't be used in ol tag. */
+ol {
+  counter-reset: section;                
+  list-style-type: none;
+}
+
+li::before {
+  counter-increment: section;    
+  /* And I changed it a bit so that make it more fix to my style. It was "-" before, I changed it to dot.  */        
+  content: counters(section,".") " . ";
+}
+
+
 .question{
     margin-bottom: 8px;
+    /* I want to set up a reading order, so I make the question part text in bold, and the answer part in regular. */
     font-weight: bold;
+    /* making it slightly bigger than answer part*/
     font-size: 18px;
+    /* The color difference serves to reading order as well.*/
     color: var(--color04);
 }
 
